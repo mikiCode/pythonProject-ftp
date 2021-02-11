@@ -3,12 +3,7 @@ import sys
 from ftplib import FTP
 from os import chdir
 
-# FTP_HOST = "217.153.206.237"
-# FTP_USER = "Canalplus"
-# FTP_PASS = "Canalplus2012"
-# FTP_CWD = "/home/Canalplus/"
-# FILE_EXT = ".mxf"
-# FTP_CHDIR = "J:\\NCPLUS_IN\\INBOX"
+
 
 
 FTP_HOST = "ftp.dlptest.com"

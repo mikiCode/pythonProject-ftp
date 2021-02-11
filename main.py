@@ -1,13 +1,10 @@
 import ftplib
 from time import time
+import WConio2 as wconio
 
 from ftp_threading import GetFilesFromFTP
 
-# FTP_HOST = "217.153.206.237"
-# FTP_USER = "Canalplus"
-# FTP_PASS = "Canalplus2012"
-# FTP_CWD = "/home/Canalplus"
-# FILE_EXT = ".mxf"
+
 
 FTP_HOST = "ftp.dlptest.com"
 FTP_USER = "dlpuser@dlptest.com"
@@ -34,20 +31,24 @@ files = [file + FILE_EXT for file in files]
 
 threads = list()
 
-if __name__ == '__main__':
-    t = []
-    start = time()
-    try:
-        for file in files:
-            t = GetFilesFromFTP(file, name=file)
-            threads.append(t)
-            # print("Starting thread to download {}".format(file))
-            t.start()
+while True:
+    if __name__ == '__main__':
+        t = []
+        start = time()
+        try:
+            for file in files:
+                t = GetFilesFromFTP(file, name=file)
+                threads.append(t)
+                # print("Starting thread to download {}".format(file))
+                t.start()
 
-        for thread in threads:
-            t.join()
-            # print("Thread {} is finished, joining back to main thread...".format(thread.name))
-        print("All threads finished, total {} seconds...".format(round(time() - start), 2))
+            for thread in threads:
+                t.join()
+                # print("Thread {} is finished, joining back to main thread...".format(thread.name))
+            print("All threads finished, total {} seconds...".format(round(time() - start), 2))
 
-    except ftplib.all_errors as e:
-        print('FTP error:', e)
+        except ftplib.all_errors as e:
+            print('FTP error:', e)
+    print("/n Press esc to exit")
+    exit_key = wconio.getkey()
+
